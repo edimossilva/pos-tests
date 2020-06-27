@@ -1,7 +1,7 @@
 <template>
 <div>
   <h1>Form</h1>
-  <h2>Welcome {{fullname}}</h2>
+  <h2 v-if="isFormCompleted" class="form__h2_welcome_message">Welcome {{fullname}}</h2>
   <div>
     <label>Name:</label>
     <input v-model="name" class="form__label_name" type="text" name="formName">
@@ -23,6 +23,9 @@ export default {
   computed: {
     fullname() {
       return `${this.name} ${this.lastName}`;
+    },
+    isFormCompleted() {
+      return !!(this.name && this.lastName);
     },
   },
 };
