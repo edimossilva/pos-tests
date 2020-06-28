@@ -26,7 +26,15 @@ export default {
       return `${this.name} ${this.lastName}`;
     },
     isFormCompleted() {
-      return !!(this.name && this.lastName);
+      const { isValidString, name, lastName } = this;
+
+      return isValidString(name) && isValidString(lastName);
+    },
+  },
+
+  methods: {
+    isValidString(string) {
+      return string.length > 1;
     },
   },
 };

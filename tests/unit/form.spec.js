@@ -33,11 +33,31 @@ describe('Form', () => {
     });
 
     describe('isFormCompleted', () => {
-      it('should be true when has name and lastName', () => {
-        const wrapper = shallowMount(Form, {
-          data: () => ({ name: 'edimo', lastName: 'sousa' }),
+      describe('When has name and lastName', () => {
+        describe('And name and lastName are valids', () => {
+          it('should be true', () => {
+            const wrapper = shallowMount(Form, {
+              data: () => ({ name: 'edimo', lastName: 'sousa' }),
+            });
+            expect(wrapper.vm.isFormCompleted).toBe(true);
+          });
         });
-        expect(wrapper.vm.isFormCompleted).toBe(true);
+
+        describe('And name and lastName are NOT valids', () => {
+          it('should be false When name is invalid', () => {
+            const wrapper = shallowMount(Form, {
+              data: () => ({ name: 'e', lastName: 'sousa' }),
+            });
+            expect(wrapper.vm.isFormCompleted).toBe(false);
+          });
+
+          it('should be false When lastName is invalid', () => {
+            const wrapper = shallowMount(Form, {
+              data: () => ({ name: 'edimo', lastName: 's' }),
+            });
+            expect(wrapper.vm.isFormCompleted).toBe(false);
+          });
+        });
       });
 
       it('should be false when has only name', () => {
@@ -103,5 +123,31 @@ describe('Form', () => {
         expect(wrapper.find('.form__h1_address').exists()).toBe(false);
       });
     });
+
+    describe('Validations', () => {
+      describe('isValidString', () => {
+        describe('When string is valid', () => {
+          it('should return true', () => {
+            const wrapper = shallowMount(Form);
+
+            expect(wrapper.vm.isValidString('edimo')).toBe(true);
+          });
+        });
+        describe('When string is NOT valid', () => {
+          it('should return false', () => {
+            const wrapper = shallowMount(Form);
+
+            expect(wrapper.vm.isValidString('e')).toBe(false);
+          });
+        });
+      });
+    });
+  });
+  it('!!', () => {
+    expect(!!'edimo').toBe(true);
+
+    expect(!!null).toBe(false);
+    expect(!!undefined).toBe(false);
+    expect(!!'').toBe(false);
   });
 });
