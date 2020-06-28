@@ -10,6 +10,7 @@
     <label>Last Name:</label>
     <input v-model="lastName" class="form__label_lastname" type="text" name="formLastName">
   </div>
+  <h1 v-if="isFormCompleted" class="form__h1_address" >Address</h1>
 </div>
 </template>
 

@@ -31,6 +31,7 @@ describe('Form', () => {
         expect(wrapper.vm.fullname).toBe('edimo sousa');
       });
     });
+
     describe('isFormCompleted', () => {
       it('should be true when has name and lastName', () => {
         const wrapper = shallowMount(Form, {
@@ -79,6 +80,27 @@ describe('Form', () => {
         });
 
         expect(wrapper.find('.form__h2_welcome_message').exists()).toBe(false);
+      });
+    });
+  });
+
+  describe('Address', () => {
+    describe('When name and lastname are filled', () => {
+      const wrapper = shallowMount(Form, {
+        computed: { isFormCompleted: () => true },
+      });
+      it('should has Address label', () => {
+        expect(wrapper.find('.form__h1_address').text()).toBe('Address');
+        expect(wrapper.find('.form__h1_address').exists()).toBe(true);
+      });
+    });
+
+    describe('When name and lastname are NOT filled', () => {
+      const wrapper = shallowMount(Form, {
+        computed: { isFormCompleted: () => false },
+      });
+      it('should NOT has Address label', () => {
+        expect(wrapper.find('.form__h1_address').exists()).toBe(false);
       });
     });
   });
