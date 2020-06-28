@@ -14,8 +14,8 @@ describe('Form', () => {
 
   it("should show 'Welcome {name} {surname}'", async () => {
     const wrapper = shallowMount(Form);
-    wrapper.find('.form__label_name').setValue('edimo');
-    wrapper.find('.form__label_lastname').setValue('sousa');
+    wrapper.find('.form__input_name').setValue('edimo');
+    wrapper.find('.form__input_last_name').setValue('sousa');
 
     await wrapper.vm.$forceUpdate(); // this makes vue update the DOM
 

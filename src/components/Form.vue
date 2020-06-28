@@ -4,11 +4,11 @@
   <h2 v-show="isFormCompleted" class="form__h2_welcome_message">Welcome {{fullname}}</h2>
   <div>
     <label>Name:</label>
-    <input v-model="name" class="form__label_name" type="text" name="formName">
+    <input v-model="name" class="form__input_name" type="text" name="formName">
   </div>
   <div>
     <label>Last Name:</label>
-    <input v-model="lastName" class="form__label_lastname" type="text" name="formLastName">
+    <input v-model="lastName" class="form__input_last_name" type="text" name="formLastName">
   </div>
   <h1 v-show="isFormCompleted" class="form__h1_address" >Address</h1>
 
