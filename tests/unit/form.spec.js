@@ -44,16 +44,29 @@ describe('Form', () => {
         });
 
         describe('And name and lastName are NOT valids', () => {
-          it('should be false When name is invalid', () => {
+          it('should be false When name length is lesser than 2', () => {
             const wrapper = shallowMount(Form, {
               data: () => ({ name: 'e', lastName: 'sousa' }),
             });
             expect(wrapper.vm.isFormCompleted).toBe(false);
           });
 
-          it('should be false When lastName is invalid', () => {
+          it('should be false When lastName length is lesser than 2', () => {
             const wrapper = shallowMount(Form, {
               data: () => ({ name: 'edimo', lastName: 's' }),
+            });
+            expect(wrapper.vm.isFormCompleted).toBe(false);
+          });
+
+          it('should be false When name contains number', () => {
+            const wrapper = shallowMount(Form, {
+              data: () => ({ name: 'e123', lastName: 'sousa' }),
+            });
+            expect(wrapper.vm.isFormCompleted).toBe(false);
+          });
+          it('should be false When lastname contains number', () => {
+            const wrapper = shallowMount(Form, {
+              data: () => ({ name: 'edimo', lastName: '123' }),
             });
             expect(wrapper.vm.isFormCompleted).toBe(false);
           });
