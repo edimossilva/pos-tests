@@ -1,7 +1,7 @@
 <template>
 <div>
   <h1>Form</h1>
-  <h2 v-if="isFormCompleted" class="form__h2_welcome_message">Welcome {{fullname}}</h2>
+  <h2 v-show="isFormCompleted" class="form__h2_welcome_message">Welcome {{fullname}}</h2>
   <div>
     <label>Name:</label>
     <input v-model="name" class="form__label_name" type="text" name="formName">
@@ -10,7 +10,10 @@
     <label>Last Name:</label>
     <input v-model="lastName" class="form__label_lastname" type="text" name="formLastName">
   </div>
-  <h1 v-if="isFormCompleted" class="form__h1_address" >Address</h1>
+  <h1 v-show="isFormCompleted" class="form__h1_address" >Address</h1>
+
+  <button @click="goToHome" v-show="isFormCompleted" class="form__button_go_home" >Go home</button>
+
 </div>
 </template>
 
@@ -44,6 +47,9 @@ export default {
     hasOnlyLetter(string) {
       const lettersRegex = /^[A-Za-z]+$/;
       return !!string.match(lettersRegex);
+    },
+    goToHome() {
+      this.$router.push({ name: 'Home' });
     },
   },
 };

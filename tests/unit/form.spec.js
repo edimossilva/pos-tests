@@ -102,7 +102,7 @@ describe('Form', () => {
           data: () => ({ name: 'edimo', lastName: 'sousa' }),
         });
         expect(wrapper.find('.form__h2_welcome_message').text()).toBe('Welcome edimo sousa');
-        expect(wrapper.find('.form__h2_welcome_message').exists()).toBe(true);
+        expect(wrapper.find('.form__h2_welcome_message').attributes('style')).not.toBe('display: none;');
       });
     });
 
@@ -112,7 +112,7 @@ describe('Form', () => {
           data: () => ({ name: 'edimo', lastName: '' }),
         });
 
-        expect(wrapper.find('.form__h2_welcome_message').exists()).toBe(false);
+        expect(wrapper.find('.form__h2_welcome_message').attributes('style')).toBe('display: none;');
       });
     });
   });
@@ -124,7 +124,7 @@ describe('Form', () => {
       });
       it('should has Address label', () => {
         expect(wrapper.find('.form__h1_address').text()).toBe('Address');
-        expect(wrapper.find('.form__h1_address').exists()).toBe(true);
+        expect(wrapper.find('.form__h1_address').attributes('style')).not.toBe('display: none;');
       });
     });
 
@@ -133,7 +133,7 @@ describe('Form', () => {
         computed: { isFormCompleted: () => false },
       });
       it('should NOT has Address label', () => {
-        expect(wrapper.find('.form__h1_address').exists()).toBe(false);
+        expect(wrapper.find('.form__h1_address').attributes('style')).toBe('display: none;');
       });
     });
 
