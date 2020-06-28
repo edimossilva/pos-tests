@@ -125,6 +125,20 @@ describe('Form', () => {
     });
 
     describe('Validations', () => {
+      describe('hasOnlyLetters', () => {
+        describe('When has only letters', () => {
+          it('returns true', () => {
+            const wrapper = shallowMount(Form);
+
+            expect(wrapper.vm.hasOnlyLetter('edimo')).toBe(true);
+          });
+          it('returns false', () => {
+            const wrapper = shallowMount(Form);
+
+            expect(wrapper.vm.hasOnlyLetter('123')).toBe(false);
+          });
+        });
+      });
       describe('isValidString', () => {
         describe('When string is valid', () => {
           it('should return true', () => {
@@ -146,6 +160,9 @@ describe('Form', () => {
   it('!!', () => {
     expect(!!'edimo').toBe(true);
 
+    expect(!!false).toBe(false);
+    expect(!!NaN).toBe(false);
+    expect(!!0).toBe(false);
     expect(!!null).toBe(false);
     expect(!!undefined).toBe(false);
     expect(!!'').toBe(false);

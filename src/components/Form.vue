@@ -36,6 +36,10 @@ export default {
     isValidString(string) {
       return string.length > 1;
     },
+    hasOnlyLetter(string) {
+      const lettersRegex = /^[A-Za-z]+$/;
+      return !!string.match(lettersRegex);
+    },
   },
 };
 </script>
